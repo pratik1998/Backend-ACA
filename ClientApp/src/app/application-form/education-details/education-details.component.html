@@ -1,0 +1,39 @@
+<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Acadamic Details
+    </mat-panel-title>
+    <mat-panel-description>
+      Details of the qualifying degrees
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="form">
+    <div *ngFor="let detail of educationDetails; let i = index">
+      <mat-form-field>
+        <input matInput placeholder="Degree" [(ngModel)]="educationDetails[i].degree">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Discipline" [(ngModel)]="educationDetails[i].discipline">
+      </mat-form-field>
+      <button *ngIf="i===(educationDetails.length-1)" mat-button color="primary" (click)="addDetail()">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+      <mat-form-field>
+        <input matInput placeholder="University/Institute" [(ngModel)]="educationDetails[i].institute">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="City" [(ngModel)]="educationDetails[i].city">
+      </mat-form-field>
+      <button *ngIf="i!=0 || i!=(educationDetails.length-1)" mat-button color="warn" (click)="removeDetail(i)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-form-field>
+        <input matInput placeholder="State" [(ngModel)]="educationDetails[i].state">
+      </mat-form-field>
+    </div>
+    <mat-action-row>
+      <button mat-button color="warn" (click)="prevComponent()">Previous</button>
+      <button mat-button color="primary" (click)="nextComponent()">Next</button>
+    </mat-action-row>
+  </div>
+</mat-expansion-panel>
