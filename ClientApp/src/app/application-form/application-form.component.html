@@ -1,0 +1,59 @@
+<mat-accordion class="example-headers-align">
+  
+  <app-personal-details (childEvent)="setStep($event)" [step]="step"></app-personal-details>
+
+  <app-education-details (childEvent)="setStep($event)" [step]="step"></app-education-details>
+  
+  <app-research-interests (childEvent)="setStep($event)" [step]="step"></app-research-interests>
+
+  <mat-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Upload Documents
+      </mat-panel-title>
+      <mat-panel-description>
+        Submit relevant files
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="form">
+      <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <button mat-raised-button (click)="openUploadDialog()">Upload</button>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+  </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Payment
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="form">
+      <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+    
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Finish</button>
+        </mat-action-row>
+  </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

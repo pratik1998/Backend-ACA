@@ -1,0 +1,22 @@
+<mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Research Interests
+    </mat-panel-title>
+    <mat-panel-description>
+      Type your name and age
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <div class="form">
+      <mat-form-field>
+          <input matInput placeholder="First name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Age">
+        </mat-form-field>
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevComponent()">Previous</button>
+          <button mat-button color="primary" (click)="nextComponent()">Next</button>
+        </mat-action-row>
+  </div>
+</mat-expansion-panel>

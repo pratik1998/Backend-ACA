@@ -1,0 +1,5 @@
+<div style="text-align:center" *ngIf="!alertMessage">
+    <h1 > Current Donation Amount:{{amount | currency: 'EUR'}}</h1>
+    <input #donation type="text">
+    <button (click)="displayDonationAmount(donation.value)"> Donate </button>
+  </div>

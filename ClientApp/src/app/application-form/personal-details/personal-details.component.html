@@ -1,0 +1,82 @@
+<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title >
+      Personal Information
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <hr style="border: 0.8px solid #2421c4;" />
+
+    <!--Select this part for image upload and display-->
+    <input type="file" #file style="display: none" accept=".jpg,.jpeg,.png" (change)="onImageAdded($event)" single />
+    <table>
+      <tr>
+        <img class="profile-picture" [src]="imageFilePath" *ngIf="imageFilePath">
+      </tr>
+      <tr>
+        <button mat-raised-button color="primary" class="add-files-btn" (click)="addImage()">
+          Upload Picture
+        </button>
+      </tr>
+    </table>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Name as in 10th/12th marksheet" [(ngModel)]="personalId.fullName">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Father's/Guardian's name" [(ngModel)]="personalId.gName">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Select Date of Birth" [(ngModel)]="personalId.dob">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <h3>Select Gender</h3>
+      <mat-radio-group class="radio" >
+        <mat-radio-button class="subradio" value="1">Male</mat-radio-button>
+        <mat-radio-button class="subradio" value="2">Female</mat-radio-button>
+        <mat-radio-button class="subradio" value="3">Transgender</mat-radio-button>
+      </mat-radio-group>
+      <h3>Address</h3>
+      <div class="general">
+        <mat-form-field>
+          <input matInput placeholder="Contact Person" [(ngModel)]="address.contactperson">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Address line 1" [(ngModel)]="address.addressline1">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Address line 2" [(ngModel)]="address.addressline2">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="City" [(ngModel)]="address.city">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="State" [(ngModel)]="address.state">
+              <mat-option *ngFor="let state of states" [value]="state">{{ state }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="PIN Code" [(ngModel)]="address.pincode">
+        </mat-form-field>
+      </div>
+      <h3>Contact Information</h3>
+      <div class="general">
+        <mat-form-field>
+          <input matInput placeholder="STD Code" [(ngModel)]="cInfo.STD_code">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Telephone Number" [(ngModel)]="cInfo.telno">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Mobile Number" [(ngModel)]="cInfo.mobno">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Email" [(ngModel)]="cInfo.email">
+        </mat-form-field>
+      </div>
+      <mat-action-row>
+        <button mat-button color="primary" (click)="nextComponent()">Next</button>
+      </mat-action-row>
+    </div>
+  </mat-expansion-panel>
